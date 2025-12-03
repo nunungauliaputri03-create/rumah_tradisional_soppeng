@@ -4,17 +4,17 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Mencegah scroll yang tidak perlu */
+    overflow: hidden; 
     font-family: sans-serif;
-    background-color: #0d1117; /* Sesuai dengan latar belakang gelap di Gambar 2 */
-    color: #f0f6fc; /* Warna teks putih */
+    background-color: #0d1117; 
+    color: #f0f6fc; 
 }
 
 /* 1. KUNCI UTAMA: Elemen Pannellum/Panorama */
 #panorama {
     height: 100%;
     width: 100%;
-    position: absolute; /* Penting agar elemen mengisi ruang */
+    position: absolute; 
     top: 0;
     left: 0;
     z-index: 1; /* Di bawah elemen UI lainnya */
@@ -27,14 +27,14 @@ html, body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 60px; /* Ketinggian bar */
-    background-color: rgba(0, 0, 0, 0.6); /* Latar belakang semi-transparan */
+    height: 60px; 
+    background-color: rgba(0, 0, 0, 0.6); 
     color: white;
     padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 10; /* Pastikan di atas panorama */
+    z-index: 10; 
 }
 
 .go-home {
@@ -79,9 +79,9 @@ html, body {
 
 .scenes {
     position: absolute;
-    bottom: 20px; /* Jarak dari bawah */
+    bottom: 20px; 
     left: 50%;
-    transform: translateX(-50%); /* Posisi tepat di tengah horizontal */
+    transform: translateX(-50%); 
     z-index: 10;
     display: flex;
     gap: 5px;
@@ -107,7 +107,7 @@ html, body {
 
 .coord-hint {
     position: absolute;
-    bottom: 80px; /* Di atas tombol scenes */
+    bottom: 80px; 
     right: 20px;
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
@@ -125,14 +125,14 @@ html, body {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
-    display: none; /* Default tersembunyi */
+    display: none; /* <--- PASTIKAN INI 'none' */
     justify-content: center;
     align-items: center;
     z-index: 20;
 }
 
 .minimap-modal.active {
-    display: flex; /* Ditampilkan saat class 'active' ditambahkan oleh JS */
+    display: flex; /* <-- Ini yang menampilkannya */
 }
 
 .minimap-img {
@@ -140,5 +140,14 @@ html, body {
     max-height: 90%;
     object-fit: contain;
     border: 5px solid white;
-    cursor: pointer; /* Menunjukkan bahwa bisa diklik untuk ditutup */
+    cursor: pointer; 
+}
+
+/* --- Perbaikan untuk Hotspot Text (Jika diperlukan) --- */
+/* Elemen Pannellum yang menampilkan text hotspot */
+.pnlm-tooltip-inner {
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
 }
