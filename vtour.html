@@ -4,139 +4,143 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tur Virtual Rumah Tradisional Soppeng</title>
+
+    <!-- Pannellum CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/vtour.css">
+
+    <!-- Pannellum JS -->
     <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
 </head>
 
 <body>
 
+<!-- TOP BAR -->
 <div class="top-bar">
-  <a href="index.html" class="go-home">← Kembali ke Beranda</a>
-  <h3 class="page-title">Pannellum Virtual Tour (Scenes 0 → 4)</h3>
-  <div class="top-bar__actions">
-    <button class="minimap-btn" onclick="showMinimap()">Tampilkan Minimap</button>
-    <button id="toggleDragBtn" class="minimap-btn">Nonaktifkan Drag</button>
-  </div>
+    <a href="index.html" class="go-home">← Kembali ke Beranda</a>
+    <h3 class="page-title">Pannellum Virtual Tour (Scenes 0 → 4)</h3>
+
+    <div class="top-bar__actions">
+        <button class="minimap-btn" onclick="showMinimap()">Tampilkan Minimap</button>
+        <button id="toggleDragBtn" class="minimap-btn">Nonaktifkan Drag</button>
+    </div>
 </div>
 
-<!-- Modal Minimap -->
+<!-- MINIMAP -->
 <div id="minimapModal" class="minimap-modal" onclick="hideMinimap()">
-  <img src="assets/images/minimap.png" class="minimap-img">
+    <img src="assets/images/minimap.png" class="minimap-img">
 </div>
 
+<!-- PANORAMA 360 -->
 <div id="panorama"></div>
 
+<!-- SCENE BUTTONS -->
 <div class="scenes">
-  <button onclick="viewer.loadScene('s0')">0</button>
-  <button onclick="viewer.loadScene('s1')">1</button>
-  <button onclick="viewer.loadScene('s2')">2</button>
-  <button onclick="viewer.loadScene('s3')">3</button>
-  <button onclick="viewer.loadScene('s4')">4</button>
+    <button onclick="viewer.loadScene('s0')">0</button>
+    <button onclick="viewer.loadScene('s1')">1</button>
+    <button onclick="viewer.loadScene('s2')">2</button>
+    <button onclick="viewer.loadScene('s3')">3</button>
+    <button onclick="viewer.loadScene('s4')">4</button>
 </div>
 
 <script>
+// ==================== VIEWER CONFIG ====================
 var viewer = pannellum.viewer('panorama', {
     "default": {
-      "firstScene": "s0",
-      "autoLoad": true,
-      "showControls": true
+        "firstScene": "s0",
+        "autoLoad": true,
+        "showControls": true
     },
+
     "scenes": {
+        "s0": {
+            "title": "bagian bawah",
+            "type": "equirectangular",
+            "panorama": "assets/360_images/bagian_bawah.jpg",
+            "pitch": 10,
+            "hfov": 120,
+            "hotSpots": [
+                { "pitch": 10, "yaw": -3, "type": "scene", "sceneId": "s1", "text": "bagian dalam (1)" }
+            ]
+        },
 
-      "s0": {
-        "title": "bagian bawah",
-        "type": "equirectangular",
-        "panorama": "assets/360_images/bagian_bawah.jpg",
-        "pitch": 10,
-        "hfov": 120,
-        "hotSpots": [
-          { "pitch": 10, "yaw": -3, "type": "scene", "sceneId": "s1", "text": "bagian dalam (1)" }
-        ]
-      },
+        "s1": {
+            "title": "bagian dalam (1)",
+            "type": "equirectangular",
+            "panorama": "assets/360_images/bagian_dalam_(1).jpg",
+            "pitch": 10,
+            "hfov": 120,
+            "hotSpots": [
+                { "pitch": 0, "yaw": 0, "type": "scene", "sceneId": "s2", "text": "bagian dalam (2)" }
+            ]
+        },
 
-      "s1": {
-        "title": "bagian dalam (1)",
-        "type": "equirectangular",
-        "panorama": "assets/360_images/bagian_dalam_(1).jpg",
-        "pitch": 10,
-        "hfov": 120,
-        "hotSpots": [
-          { "pitch": 0, "yaw": 0, "type": "scene", "sceneId": "s2", "text": "bagian dalam (2)" }
-        ]
-      },
+        "s2": {
+            "title": "bagian dalam (2)",
+            "type": "equirectangular",
+            "panorama": "assets/360_images/bagian_dalam_(2).jpg",
+            "hfov": 120,
+            "hotSpots": [
+                { "pitch": 0, "yaw": 0, "type": "scene", "sceneId": "s3", "text": "bagian depan tangga" }
+            ]
+        },
 
-      "s2": {
-        "title": "bagian dalam (2)",
-        "type": "equirectangular",
-        "panorama": "assets/360_images/bagian_dalam_(2).jpg",
-        "hfov": 120,
-        "hotSpots": [
-          { "pitch": 0, "yaw": 0, "type": "scene", "sceneId": "s3", "text": "bagian depan tangga" }
-        ]
-      },
+        "s3": {
+            "title": "bagian depan tangga",
+            "type": "equirectangular",
+            "panorama": "assets/360_images/bagian_depan_tangga.jpg",
+            "hfov": 120,
+            "yaw": -180,
+            "hotSpots": [
+                { "pitch": 0, "yaw": -220, "type": "scene", "sceneId": "s4", "text": "bagian depan" }
+            ]
+        },
 
-      "s3": {
-        "title": "bagian depan tangga",
-        "type": "equirectangular",
-        "panorama": "assets/360_images/bagian_depan_tangga.jpg",
-        "hfov": 120,
-        "yaw": -180,
-        "hotSpots": [
-          { "pitch": 0, "yaw": -150, "type": "scene", "sceneId": "s4", "text": "bagian depan" }
-        ]
-      },
-
-      "s4": {
-        "title": "bagian depan",
-        "type": "equirectangular",
-        "panorama": "assets/360_images/bagian_depan.jpg",
-        "hfov": 120,
-        "hotSpots": [
-          { "pitch": 0, "yaw": 0, "type": "scene", "sceneId": "s0", "text": "bagian bawah" }
-        ]
-      },
-
+        "s4": {
+            "title": "bagian depan",
+            "type": "equirectangular",
+            "panorama": "assets/360_images/bagian_depan.jpg",
+            "hfov": 120,
+            "hotSpots": [
+                { "pitch": 0, "yaw": 0, "type": "scene", "sceneId": "s0", "text": "bagian bawah" }
+            ]
+        }
     }
 });
 
-// MINIMAP
+// ==================== MINIMAP ====================
 function showMinimap() {
-  document.getElementById('minimapModal').classList.add('active');
+    document.getElementById("minimapModal").classList.add("active");
 }
 function hideMinimap() {
-  document.getElementById('minimapModal').classList.remove('active');
+    document.getElementById("minimapModal").classList.remove("active");
 }
 
-// KOORDINAT
-const panoramaEl = document.getElementById('panorama');
-const coordDiv = document.createElement('div');
-coordDiv.className = 'coord-hint';
-coordDiv.textContent = 'Klik panorama untuk koordinat';
-panoramaEl.appendChild(coordDiv);
-
-const toggleBtn = document.getElementById('toggleDragBtn');
+// ==================== DRAG / COORDINATE MODE ====================
 let dragEnabled = true;
+const panoramaEl = document.getElementById("panorama");
+const toggleBtn = document.getElementById("toggleDragBtn");
 
-function disableDrag() {
-  dragEnabled = false;
-  coordDiv.textContent = "Mode koordinat aktif — klik panorama";
-  toggleBtn.textContent = "Aktifkan Drag";
-}
-function enableDrag() {
-  dragEnabled = true;
-  coordDiv.textContent = "Klik panorama untuk koordinat";
-  toggleBtn.textContent = "Nonaktifkan Drag";
-}
-toggleBtn.onclick = () => dragEnabled ? disableDrag() : enableDrag();
-
-panoramaEl.onclick = function(e) {
-  if (!dragEnabled) {
-    const c = viewer.mouseEventToCoords(e);
-    coordDiv.textContent = `Yaw: ${c.yaw.toFixed(2)}, Pitch: ${c.pitch.toFixed(2)}`;
-  }
+toggleBtn.onclick = function () {
+    if (dragEnabled) disableDrag();
+    else enableDrag();
 };
 
+function disableDrag() {
+    dragEnabled = false;
+    panoramaEl.style.cursor = "pointer";
+    toggleBtn.textContent = "Aktifkan Drag";
+}
+
+function enableDrag() {
+    dragEnabled = true;
+    panoramaEl.style.cursor = "grab";
+    toggleBtn.textContent = "Nonaktifkan Drag";
+}
+
+enableDrag();
 </script>
 
 </body>
