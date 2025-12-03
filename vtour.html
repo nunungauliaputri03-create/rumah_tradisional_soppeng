@@ -11,22 +11,20 @@
 </head>
 <body>
 <div class="top-bar">
-  <a href="index.html" class="go-home">← Kembali ke Beranda</a>
-  <h3 class="page-title">Pannellum Virtual Tour (Scenes 0 → 4)</h3>
-  <div class="top-bar__actions">
-    <button class="minimap-btn" onclick="showMinimap()">Tampilkan Minimap</button>
-    <button id="toggleDragBtn" class="minimap-btn">Nonaktifkan Drag</button>
-  </div>
+    <a href="index.html" class="go-home">← Kembali ke Beranda</a>
+    <h3 class="page-title">Pannellum Virtual Tour (Scenes 0 → 4)</h3>
+    <div class="top-bar__actions">
+        <button class="minimap-btn" onclick="showMinimap()">Tampilkan Minimap</button>
+        <button id="toggleDragBtn" class="minimap-btn">Nonaktifkan Drag</button>
+    </div>
 </div>
 
-<!-- Modal Minimap -->
 <div id="minimapModal" class="minimap-modal" onclick="hideMinimap()">
-  <img src= "assets/images/minimap.png" alt="Minimap Virtual Tour" class="minimap-img">
+    <img src= "assets/images/minimap.png" alt="Minimap Virtual Tour" class="minimap-img">
 </div>
 
 <div id="panorama"></div>
 <div class="scenes">
-    <!-- Static scene buttons without any loop -->
     <button onclick="viewer.loadScene('s0')">0</button>
     <button onclick="viewer.loadScene('s1')">1</button>
     <button onclick="viewer.loadScene('s2')">2</button>
@@ -135,12 +133,14 @@ var viewer = pannellum.viewer('panorama', {
   function showCoords(event) {
     const coords = viewer.mouseEventToCoords(event);
     if (coords && Number.isFinite(coords.yaw) && Number.isFinite(coords.pitch)) {
-      coordDiv.textContent = Yaw: ${coords.yaw.toFixed(2)}, Pitch: ${coords.pitch.toFixed(2)};
+        // PERBAIKAN: Mengganti tanda kutip dengan backtick (`)
+        coordDiv.textContent = `Yaw: ${coords.yaw.toFixed(2)}, Pitch: ${coords.pitch.toFixed(2)}`;
     } else {
       const fallbackYaw = typeof viewer.getYaw === 'function' ? viewer.getYaw() : NaN;
       const fallbackPitch = typeof viewer.getPitch === 'function' ? viewer.getPitch() : NaN;
       if (Number.isFinite(fallbackYaw) && Number.isFinite(fallbackPitch)) {
-        coordDiv.textContent = Yaw: ${fallbackYaw.toFixed(2)}, Pitch: ${fallbackPitch.toFixed(2)};
+        // PERBAIKAN: Mengganti tanda kutip dengan backtick (`)
+        coordDiv.textContent = `Yaw: ${fallbackYaw.toFixed(2)}, Pitch: ${fallbackPitch.toFixed(2)}`;
       } else {
         setCoordHint('Tidak dapat membaca koordinat');
       }
