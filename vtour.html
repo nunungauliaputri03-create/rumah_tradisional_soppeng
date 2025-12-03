@@ -3,28 +3,31 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tur Virtual Rumah Tradisional Soppeng</title>
+    <title>Tur Virtual Rumah Tradisional Soppeng 0-4 (no loops)</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
-    <link rel="stylesheet" href="styles/vtour.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-
+    <link rel="stylesheet" href="style/vtour.css">
 </head>
+
 <body>
 <div class="top-bar">
-    <a href="index.html" class="go-home">← Kembali ke Beranda</a>
-    <h3 class="page-title">Pannellum Virtual Tour (Scenes 0 → 4)</h3>
-    <div class="top-bar__actions">
-        <button class="minimap-btn" onclick="showMinimap()">Tampilkan Minimap</button>
-        <button id="toggleDragBtn" class="minimap-btn">Nonaktifkan Drag</button>
-    </div>
+  <a href="index.html" class="go-home">← Kembali ke Beranda</a>
+  <h3 class="page-title">Tur Virtual Rumah Tradisional Soppeng (Scenes 0 → 4)</h3>
+  <div class="top-bar__actions">
+    <button class="minimap-btn" onclick="showMinimap()">Tampilkan Minimap</button>
+    <button id="toggleDragBtn" class="minimap-btn">Nonaktifkan Drag</button>
+  </div>
 </div>
+</body>
 
+<!-- Modal Minimap -->
 <div id="minimapModal" class="minimap-modal" onclick="hideMinimap()">
-    <img src= "assets/images/minimap.png" alt="Minimap Virtual Tour" class="minimap-img">
+  <img src="assets/images/minimap.png" alt="Minimap Tur Virtual" class="minimap-img">
 </div>
 
 <div id="panorama"></div>
 <div class="scenes">
+    <!-- Static scene buttons without any loop -->
     <button onclick="viewer.loadScene('s0')">0</button>
     <button onclick="viewer.loadScene('s1')">1</button>
     <button onclick="viewer.loadScene('s2')">2</button>
@@ -33,6 +36,49 @@
 </div>
 
 <script>
+
+  // function renderAlertHotspot(hotSpotDiv, args) {
+  //   hotSpotDiv.classList.add('custom-hotspot');
+
+  //   if (args) {
+  //     const tooltip = document.createElement('span');
+  //     tooltip.textContent = args;
+  //     hotSpotDiv.appendChild(tooltip);
+  //   }
+  // }
+
+  /*
+    // === Generator otomatis hotspot ===
+    // const LAST_SCENE_INDEX = 53;
+    // const scenes = {};
+    // for (let i = 0; i <= LAST_SCENE_INDEX; i += 1) {
+    //   const sceneId = `s${i}`;
+    //   const entry = {
+    //     title: `Spot ${i}`,
+    //     type: "equirectangular",
+    //     panorama: `panos/image${i}.jpg`
+    //   };
+    //   if (i < LAST_SCENE_INDEX) {
+    //     entry.hotSpots = [{
+    //       pitch: 0,
+    //       yaw: 0,
+    //       type: "scene",
+    //       sceneId: `s${i + 1}`,
+    //       text: `Ke Spot ${i + 1}`
+    //     }];
+    //   }
+    //   scenes[sceneId] = entry;
+    // }
+    // var viewer = pannellum.viewer('panorama', {
+    //   "default": {
+    //     "firstScene": "s0",
+    //     "autoLoad": true,
+    //     "showControls": true
+    //   },
+    //   "scenes": scenes
+    // });
+  */
+
 // === Konfigurasi manual dengan hotspot eksplisit ===
 var viewer = pannellum.viewer('panorama', {
     "default": {
