@@ -1,84 +1,41 @@
 <!DOCTYPE HTML>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tur Virtual Rumah Tradisional Soppeng</title>
+    <title>Tur Virtual Rumah Adat Kajang</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
-    <link rel="stylesheet" href="styles/css/vtour.css">
+    <link rel="stylesheet" href="styles/vtour.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+
 </head>
-
 <body>
-  <div class="top-bar">
-    <a href="index.html" class="go-home">← Kembali ke Beranda</a>
-    <h3 class="page-title">Tur Virtual Rumah Tradisional Soppeng</h3>
-    <div class="top-bar__actions">
-      <button class="minimap-btn" onclick="showMinimap()">Tampilkan Minimap</button>
-      <button id="toggleDragBtn" class="minimap-btn">Nonaktifkan Drag</button>
-    </div>
+<div class="top-bar">
+  <a href="index.html" class="go-home">← Kembali ke Beranda</a>
+  <h3 class="page-title">Pannellum Virtual Tour (Scenes 0 → 5)</h3>
+  <div class="top-bar__actions">
+    <button class="minimap-btn" onclick="showMinimap()">Tampilkan Minimap</button>
+    <button id="toggleDragBtn" class="minimap-btn">Nonaktifkan Drag</button>
   </div>
+</div>
 
-  <!-- Modal Minimap -->
-  <div id="minimapModal" class="minimap-modal" onclick="hideMinimap()">
-    <img src="assets/images/minimap.png" alt="Minimap Virtual Tour" class="minimap-img">
-  </div>
+<!-- Modal Minimap -->
+<div id="minimapModal" class="minimap-modal" onclick="hideMinimap()">
+  <img src= "assets/images/mini map.png" alt="Minimap Virtual Tour" class="minimap-img">
+</div>
 
-  <div id="panorama"></div>
-  <div class="scenes">
-    <!-- Static scene buttons without any loop -->
-    <button onclick="viewer.loadScene('s0')">0</button>
-    <button onclick="viewer.loadScene('s1')">1</button>
-    <button onclick="viewer.loadScene('s2')">2</button>
-    <button onclick="viewer.loadScene('s3')">3</button>
-    <button onclick="viewer.loadScene('s4')">4</button>
-  </div>
+<div id="panorama"></div>
+<div class="scenes">
+  <!-- Static scene buttons without any loop -->
+  <button onclick="viewer.loadScene('s0')">0</button>
+  <button onclick="viewer.loadScene('s1')">1</button>
+  <button onclick="viewer.loadScene('s2')">2</button>
+  <button onclick="viewer.loadScene('s3')">3</button>
+  <button onclick="viewer.loadScene('s4')">4</button>
+  <button onclick="viewer.loadScene('s5')">5</button>
+</div>
 
 <script>
-
-  // function renderAlertHotspot(hotSpotDiv, args) {
-  //   hotSpotDiv.classList.add('custom-hotspot');
-
-  //   if (args) {
-  //     const tooltip = document.createElement('span');
-  //     tooltip.textContent = args;
-  //     hotSpotDiv.appendChild(tooltip);
-  //   }
-  // }
-
-  /*
-    // === Generator otomatis hotspot ===
-    // const LAST_SCENE_INDEX = 53;
-    // const scenes = {};
-    // for (let i = 0; i <= LAST_SCENE_INDEX; i += 1) {
-    //   const sceneId = `s${i}`;
-    //   const entry = {
-    //     title: `Spot ${i}`,
-    //     type: "equirectangular",
-    //     panorama: `panos/image${i}.jpg`
-    //   };
-    //   if (i < LAST_SCENE_INDEX) {
-    //     entry.hotSpots = [{
-    //       pitch: 0,
-    //       yaw: 0,
-    //       type: "scene",
-    //       sceneId: `s${i + 1}`,
-    //       text: `Ke Spot ${i + 1}`
-    //     }];
-    //   }
-    //   scenes[sceneId] = entry;
-    // }
-    // var viewer = pannellum.viewer('panorama', {
-    //   "default": {
-    //     "firstScene": "s0",
-    //     "autoLoad": true,
-    //     "showControls": true
-    //   },
-    //   "scenes": scenes
-    // });
-  */
-
   // === Konfigurasi manual dengan hotspot eksplisit ===
   var viewer = pannellum.viewer('panorama', {
     "default": {
@@ -87,113 +44,12 @@
       "showControls": true
     },
     "scenes": {
-      "s0":  { 
-        "title": "Halaman Utama",  
-        "type": "equirectangular", 
-        "panorama": "assets/360_images/bagian depan tangga.jpg",  
-        "hotSpots": [
-          { 
-            "pitch": 0,
-            "yaw": 0, 
-            "type": "scene", 
-            "sceneId": "s1",  
-            "text": "Ke Tangga" 
-          },
-          {
-            "pitch": 7.21,
-            "yaw": 17.52,
-            "type": "info",
-            "text": "Gazebo"
-          },
-          {
-            "pitch": -6.12,
-            "yaw": 49.31,
-            "type": "info",
-            "text": "Pagar"
-          },
-      ] },
-      "s1":  { 
-        "title": "Teras",  
-        "type": "equirectangular", 
-        "panorama": "assets/360_images/bagian depan.jpg",  
-        "hotSpots": [
-          { "pitch": 0, 
-            "yaw": 0, 
-            "type": "scene", 
-            "sceneId": "s2",  
-            "text": "Ke Ruang Tamu" 
-           },
-          {
-            "pitch": -48.53,
-            "yaw": 18.63,
-            "type": "info",
-            "text": "Keset"
-           },
-          {
-            "pitch": -37.34,
-            "yaw": 107.62,
-            "type": "info",
-            "text": "Gazebo"
-           },
-          {
-            "pitch":5.10,
-            "yaw":-54.01,
-            "type":"info",
-            "text":"Jendela"
-          },
-      ] },
-      "s2":  { 
-        "title": "Ruang Tamu",  
-        "type": "equirectangular", 
-        "panorama": "assets/360_images/bagian dalam (1).jpg",
-        "pitch": 5,
-        "yaw": -61,  
-        "hotSpots": [
-          { 
-            "pitch": 0, 
-            "yaw": 0, 
-            "type": "scene", 
-            "sceneId": "s3",  
-            "text": "Ke Spot 3" 
-          },
-          {
-            "pitch":-11.08,
-            "yaw":-82.77,
-            "type":"info",
-            "text":"Kursi"
-          },
-      ] },
-      
-      "s3":  { 
-      "title": "Ruang Tamu",  
-      "type": "equirectangular", 
-      "panorama": "assets/360_images/bagian dalam (2).jpg",  
-      "hotSpots": [{ 
-        "pitch": 0, 
-        "yaw": 0, 
-        "type": "scene", 
-        "sceneId": "s4",  
-        "text": "Ke Spot 4" }] },
-
-      "s4":  { 
-        "title": "Halaman Bawah Rumah",  
-        "type": "equirectangular", 
-        "panorama": "assets/360_images/bagian bawah.jpg",  
-        "hotSpots": [
-            { 
-            "pitch": 0, 
-            "yaw": 0, 
-            "type": "scene", 
-            "sceneId": "s5",  
-            "text": "Ke Spot 5" 
-            },
-         {
-            "pitch":5.10,
-            "yaw":-54.01,
-            "type":"info",
-            "text":"Jendela"
-          },
-       ] },
+      "s0":  { "title": "depan rumah",  "type": "equirectangular", "panorama": "assets/360_images/depan rumah.jpg",  "pitch": 10, "hfov": 120, "hotSpots": [{ "pitch": 10, "yaw": -3, "type": "scene", "sceneId": "s1",  "text": "depan tangga" }] },
+      "s1":  { "title": "depan tangga",  "type": "equirectangular", "panorama": "assets/360_images/depan tangga.jpg",  "pitch": 10, "hfov": 120, "hotSpots": [{ "pitch": 0, "yaw": 0, "type": "scene", "sceneId": "s2",  "text": "depan pintu" }] },
+      "s2":  { "title": "depan pintu",  "type": "equirectangular", "panorama": "assets/360_images/depan pintu.jpg",  "hfov": 120, "hotSpots": [{ "pitch": 0, "yaw": 0, "type": "scene", "sceneId": "s3",  "text": "ruang tengah" }] },
+      "s3":  { "title": "ruang tengah",  "type": "equirectangular", "panorama": "assets/360_images/ruang tengah.jpg",  "hfov": 120, "yaw": -180, "hotSpots": [{ "pitch": 0, "yaw": -220, "type": "scene", "sceneId": "s4",  "text": "depan kamar" }] },
+      "s4":  { "title": "depan kamar",  "type": "equirectangular", "panorama": "assets/360_images/depan kamar.jpg",  "hfov": 120, "hotSpots": [{ "pitch": 0, "yaw": 0, "type": "scene", "sceneId": "s5",  "text": "kamar" }] },
+      "s5":  { "title": "kamar",  "type": "equirectangular", "panorama": "assets/360_images/kamar.jpg", "hfov": 120, "hotSpots":[{ "pitch": 0, "yaw": 0, "type": "scene", "sceneId": "s0", "text": "Kembali ke depan rumah" }]}
     }
   });
 
